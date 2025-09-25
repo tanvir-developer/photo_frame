@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Task</title>
+		<title>Photo Frame Editor</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<style>
 			html{
@@ -51,12 +51,11 @@
 		<div class="container">
 			<br>
 			<br>
-			<div class="row" style="border:1px solid #000;padding: 50px 20px 50px 20px;">
+			<div class="row" style="background: #aad5d5;border:1px solid #000;padding: 50px 20px 50px 20px;">
 				
 				<div class="col-md-5">
 					<!-- <img src="<?= $session_picture;?>"> -->
-
-					<canvas id="testCanvas"></canvas>
+				<canvas id="testCanvas"></canvas>
 				</div>
 				<div class="col-md-7">
 					<div class="col-md-12">
@@ -72,37 +71,32 @@
 						<input type="number" name="width"  min="1" placeholder="Enter Width" required/>
 					</div>
 				</div>
-					<div class="col-md-12">
+				<div class="col-md-12">
+				<br>
+				<h4>Step 2: Choose your photo or upload your own photo</h4>
+				<br>
+				<div id="uploadedPhotos" style="display:flex; flex-wrap:wrap; gap:10px;">
+					<?php
+					$uploadedFiles = glob('upload/*_thump.*');
+					foreach($uploadedFiles as $file) {
+						echo '<img src="'.$file.'" class="uploaded-photo" style="height:60px;width:60px;object-fit:cover;cursor:pointer;border:2px solid #ccc;" onclick="selectPhoto(\''.$file.'\')">';
+					}
+					?>
+				</div>
+				<br>
 
-					<br>
-					<h4>Step 2: Choose your photo or upload your own photo</h4>
-					<br>
-					<div id="uploadedPhotos" style="display:flex; flex-wrap:wrap; gap:10px;">
-						<?php
-						$uploadedFiles = glob('upload/*_thump.*');
-						foreach($uploadedFiles as $file) {
-							echo '<img src="'.$file.'" class="uploaded-photo" style="height:60px;width:60px;object-fit:cover;cursor:pointer;border:2px solid #ccc;" onclick="selectPhoto(\''.$file.'\')">';
-						}
-						?>
-					</div>
-					<br>
-
-							<input type="file" name="image" onchange='single_attachment(this,"jpg","jpeg","png","PNG","JPG","JPEG",")' accept="image/x-png,image/jpeg"  required/>
-
-							<br>
-							<input type="submit" name="submit" value="Submit" />
-						
-					</div>
-						
-					<div class="col-md-12" >
-						<br>
-						
-					<h4>Step 3: Choose your photo frame</h4>
-						<div class="col-md-2"  >
-							<a id="frame1"><img id="fselect" class="img"  src="fr1.png"  onclick="setFrame(this);" style="height:55px;width:  55px;cursor: pointer;"></a>
-						</div><div class="col-md-2" >
-							<a id="frame2"><img  class="img" onclick="setFrame(this);" src="fr3.png"style="height:55px;width: 55px;cursor: pointer;"></a>
-						</div>
+				<input type="file" name="image" onchange='single_attachment(this,"jpg","jpeg","png","PNG","JPG","JPEG",")' accept="image/x-png,image/jpeg"  required/>
+				<br>
+				<input type="submit" name="submit" value="Submit" />
+				</div>		
+				<div class="col-md-12" >
+				<br>
+				<h4>Step 3: Choose your photo frame</h4>
+				<div class="col-md-2"  >
+					<a id="frame1"><img id="fselect" class="img"  src="fr1.png"  onclick="setFrame(this);" style="height:55px;width:  55px;cursor: pointer;"></a>
+				</div><div class="col-md-2" >
+					<a id="frame2"><img  class="img" onclick="setFrame(this);" src="fr3.png"style="height:55px;width: 55px;cursor: pointer;"></a>
+				</div>
 				</div>
 				</form>
 			</div>
