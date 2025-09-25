@@ -64,11 +64,6 @@ upload/
 3. Choose a frame style.
 4. Preview your framed photo on the canvas.
 
-## Notes
-
-- Uploaded images are resized and stored in the `upload/` directory.
-- Only JPG and PNG images are supported.
-- Frame images (`fr1.png`, `fr2.png`, `fr3.png`) can be replaced or extended as needed.
 
 ## Screenshot
 <img width="1080" height="566" alt="image" src="https://github.com/user-attachments/assets/fb450395-a9c8-4497-a438-04c1b5381e7b" />
